@@ -1,18 +1,13 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import { IAlumno } from "./interfaces/alumno.interface";
 
-interface Alumno {
-  id?: number;
-  nombre: string;
-  email: string;
-  telefono: string;
-}
-
-const App: React.FC = () => {
-  const [alumnos, setAlumnos] = useState<Alumno[]>([]);
+function App() {
+  const [alumnos, setAlumnos] = useState<IAlumno[]>([]);
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [error, setError] = useState("");
 
   const fetchAlumnos = async () => {
     try {
@@ -28,8 +23,28 @@ const App: React.FC = () => {
     fetchAlumnos();
   }, []);
 
+  const validEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const addAlumno = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
+
+    if (!nombre.trim()) {
+      setError("El nombre no puede estar vacío.");
+      return;
+    }
+    if (!email.trim() || !validEmail(email)) {
+      setError("Por favor ingresa un email válido.");
+      return;
+    }
+    if (!telefono.trim()) {
+      setError("El teléfono no puede estar vacío.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:4000/alumnos", {
         method: "POST",
@@ -56,6 +71,7 @@ const App: React.FC = () => {
     <div>
       <h1>Crear Alumno</h1>
       <form className="form" onSubmit={addAlumno}>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <input
           type="text"
           value={nombre}
@@ -90,6 +106,6 @@ const App: React.FC = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default App;
