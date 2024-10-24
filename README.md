@@ -1,7 +1,7 @@
 # 🚀 Instalación:
 
 1. Clonar repositorio:
-   <code>git clone https://github.com/danisanguino/weather.git</code>
+   <code>git clone https://github.com/bonirot/lista-clase.git</code>
 
 2. Navegar a la carpeta de backend:
    <code>cd backend</code>
