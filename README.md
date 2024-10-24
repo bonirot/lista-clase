@@ -1,19 +1,19 @@
 # 🚀 Instalación:
 
 1. Clonar repositorio:
-   <code>git clone https://github.com/bonirot/lista-clase.git</code>
+   <pre><code>git clone https://github.com/bonirot/lista-clase.git</code></pre>
 
 2. Navegar a la carpeta de backend:
-   <code>cd backend</code>
+   <pre><code>cd backend</code></pre>
 
 3. Instalar dependencias:
-   <code>npm install</code>
+   <pre><code>npm install</code></pre>
 
 4. Correr el servidor:
-   <code>nom run dev</code>
+   <pre><code>npm run dev</code></pre>
 
 5. Abrir una nueva terminal y realizar los mismos pasos en la carpeta de frontend:
-   <code>cd frontend</code>
+   <pre><code>cd frontend</code></pre>
 
 # 🛠️ Tecnologías usadas:
 
